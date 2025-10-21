@@ -5,6 +5,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PostsModule } from './posts/posts.module';
 import { UsersModule } from './users/users.module';
+import { TagsModule } from './tags/tags.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { UsersModule } from './users/users.module';
     MongooseModule.forRoot(
       'mongodb+srv://nadir2019freelance_db_desks:undqry2IAMzAcn2E@7desks.dokmawy.mongodb.net/?retryWrites=true&w=majority&appName=7desks'
     ),
+    TagsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -8,10 +8,11 @@ import {
   IsString,
   IsUrl,
   Matches,
-  MinLength
+  MinLength,
 } from 'class-validator';
 import { postStatus } from '../enums/post-status.enum';
 import { PostType } from '../enums/post-type.enum';
+import { User } from 'src/users/user.schema';
 
 export class CreatePostDto {
   @ApiProperty()
@@ -52,7 +53,6 @@ export class CreatePostDto {
   @IsString()
   content?: string;
 
-
   @ApiPropertyOptional()
   @IsOptional()
   @IsUrl()
@@ -66,8 +66,8 @@ export class CreatePostDto {
   @IsOptional()
   publishOn?: Date;
 
-  
-
-
-
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  author: string;
 }
