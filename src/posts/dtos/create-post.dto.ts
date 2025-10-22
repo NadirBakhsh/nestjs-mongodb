@@ -1,6 +1,7 @@
 // For Documenation refer url: https://docs.nestjs.com/openapi/types-and-parameters
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import {
+  IsArray,
   IsEnum,
   IsISO8601,
   IsNotEmpty,
@@ -70,4 +71,10 @@ export class CreatePostDto {
   @IsNotEmpty()
   @IsString()
   author: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  tags?: string[];
 }

@@ -3,6 +3,7 @@ import mongoose, { Document } from 'mongoose';
 import { postStatus } from './enums/post-status.enum';
 import { PostType } from './enums/post-type.enum';
 import { User } from 'src/users/user.schema';
+import { Tag } from 'src/tags/tag.schema';
 
 @Schema()
 export class Post extends Document {
@@ -39,6 +40,9 @@ export class Post extends Document {
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: User.name })
   author: User;
+
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: Tag.name }] })
+  tags?: Tag[];
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);
